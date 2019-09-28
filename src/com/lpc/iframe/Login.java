@@ -39,6 +39,7 @@ public class Login extends JFrame {
 	private static URL imgURL2;
 	private JTextField nameText;
 	private JPasswordField passText;
+	public LoginDao loginDao;
 	public static MainView mainView;
 	private static URL imgURL3;
 	private static URL imgURL4;
@@ -51,6 +52,7 @@ public class Login extends JFrame {
 	 */
 	public Login() throws HeadlessException {
 		super();
+		loginDao = new LoginDao();
 		if( Login.mainFrame != null)
 			Login.mainFrame.dispose();
 		if(Login.mainView != null)
@@ -143,7 +145,6 @@ public class Login extends JFrame {
 					JOptionPane.showMessageDialog(getContentPane(), "«Î ‰»Î√‹¬Î");
 					return ;
 				}
-				LoginDao loginDao = new LoginDao();
 				loginModel = loginDao.login(id, pass);
 				if(loginModel != null) {
 					BaseInfoDao baseInfoDao = new BaseInfoDao();
