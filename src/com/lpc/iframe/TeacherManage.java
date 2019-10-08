@@ -156,11 +156,11 @@ public class TeacherManage extends JDialog{
 	
 	
 	private void setOption() {
-		if(Integer.parseInt(Login.getLoginModel().getLimit()) < 9) {
+		if(Login.getLoginModel().getLimit() < 9) {
 			addBtn.setEnabled(false);
 			deleteBtn.setEnabled(false);
 		}
-		if(Integer.parseInt(Login.getLoginModel().getLimit()) < 7 ) {
+		if(Login.getLoginModel().getLimit() < 7 ) {
 			changeBtn.setEnabled(false);
 		}
 	}

@@ -24,7 +24,7 @@ public class LoginDao {
 				loginModel = new LoginModel();
 				loginModel.setId(user);
 				loginModel.setName(rs.getString("name"));
-				loginModel.setLimit(rs.getString("limit"));
+				loginModel.setLimit(rs.getInt("limit"));
 			}
 			loginDao.close();
 		} catch (Exception e) {
@@ -60,7 +60,7 @@ public class LoginDao {
 				LoginModel loginModel = new LoginModel();
 				loginModel.setId(rs.getString("id"));
 				loginModel.setName(rs.getString("name"));
-				loginModel.setLimit(rs.getString("limit"));
+				loginModel.setLimit(rs.getInt("limit"));
 				list.add(loginModel);
 			}
 			loginDao.close();

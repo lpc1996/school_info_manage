@@ -72,10 +72,12 @@ public class BaseInfoDao {
 					baseInfoList.add(baseInfo);
 				}
 			}	
-			baseInfoDao.close();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally {
+			baseInfoDao.close();
 		}
 		return baseInfoList;
 	}

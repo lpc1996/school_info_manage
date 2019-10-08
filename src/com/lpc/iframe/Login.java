@@ -151,10 +151,10 @@ public class Login extends JFrame {
 					Login.setUser(baseInfoDao.getUser(loginModel.getId()));
 					JOptionPane.showMessageDialog(getContentPane(), loginModel.getName()+"»¶Ó­");
 					dispose();
-//					mainFrame = new MainFrame();
-//					mainFrame.setVisible(true);
-					mainView = new MainView();
-					mainView.setVisible(true);
+					mainFrame = new MainFrame();
+					mainFrame.setVisible(true);
+//					mainView = new MainView();
+//					mainView.setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(getContentPane(), "ÓÃ»§Ãû»òÃÜÂë´íÎó,µÇÂ½Ê§°Ü");
 					return ;

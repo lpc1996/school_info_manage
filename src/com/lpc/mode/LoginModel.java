@@ -4,7 +4,7 @@ public class LoginModel {
 	
 	private String id;
 	private String name;
-	private String limit;
+	private int limit;
 
 	public LoginModel() {
 		// TODO Auto-generated constructor stub
@@ -16,7 +16,7 @@ public class LoginModel {
 	 * @param limit
 	 * @param pass
 	 */
-	public LoginModel(String id, String name, String limit) {
+	public LoginModel(String id, String name, int limit) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,7 +31,7 @@ public class LoginModel {
 		return name;
 	}
 
-	public String getLimit() {
+	public int getLimit() {
 		return limit;
 	}
 
@@ -43,7 +43,7 @@ public class LoginModel {
 		this.name = name;
 	}
 
-	public void setLimit(String limit) {
+	public void setLimit(int limit) {
 		this.limit = limit;
 	}
 

@@ -186,7 +186,7 @@ public class ConnXupt {
 				LoginModel loginModel = new LoginModel();
 				loginModel.setId(rs.getString(column[0]));
 				loginModel.setName(rs.getString(column[1]));
-				loginModel.setLimit(rs.getString(column[2]));
+				loginModel.setLimit(Integer.parseInt(rs.getString(column[2])));
 				return loginModel;
 			}else if(tableName.equals("xclass")) {
 				XClassModel xclass = new XClassModel();
@@ -231,7 +231,7 @@ public class ConnXupt {
 				LoginModel login = new LoginModel();
 				login.setId(rs.getString("id"));
 				login.setName(rs.getString("name"));
-				login.setLimit(rs.getString("limit"));
+				login.setLimit(rs.getInt(("limit")));
 				return login;
 			}
 		} catch (SQLException e) {

@@ -1,4 +1,4 @@
-package com.lpc.iframe;
+ package com.lpc.iframe;
 
 import java.awt.Dimension;
 import java.awt.Point;

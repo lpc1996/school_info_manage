@@ -162,7 +162,7 @@ public class Dao {
 				+SCM.getST()+"',time='"+SCM.getTime()+"' ";
 			}else if(tableName.equals("login")) {
 				LoginModel login = (LoginModel)data;
-				sql = sql1+"id='"+login.getId()+"',name='"+login.getName()+"',limit='"+login.getLimit()+"' ";
+				sql = sql1+"id='"+login.getId()+"',name='"+login.getName()+"',login.`limit`="+login.getLimit()+" ";
 			}
 		}
 		return sql;

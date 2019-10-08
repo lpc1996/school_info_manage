@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import com.lpc.dao.Dao;
 import com.lpc.mode.LoginModel;
 import com.lpc.util.ConnXupt;
+import com.lpc.util.tools;
 
 public class UserManage extends JDialog {
 
@@ -43,7 +44,7 @@ public class UserManage extends JDialog {
 	}
 	
 	private void InitcontPane() {
-		setTitle("年级信息管理");
+		setTitle("用户信息管理");
 		setIconImage(Toolkit.getDefaultToolkit().createImage(Login.getImgURL()));
 		setSize(700,330);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -123,7 +124,7 @@ public class UserManage extends JDialog {
 				LoginModel login = new LoginModel();
 				login.setId(contentPane.getValueAt(i, 0));
 				login.setName(contentPane.getValueAt(i, 1));
-				login.setLimit(contentPane.getValueAt(i, 2));
+				login.setLimit(Integer.parseInt(contentPane.getValueAt(i, 2)));
 				textJDialog = new TextJDialog(login);
 				textJDialog.setVisible(true);
 				InitDate();
@@ -147,14 +148,14 @@ public class UserManage extends JDialog {
 
 		public TextJDialog() {
 			super();
-			setTitle("添加选课信息");
+			setTitle("添加用户信息");
 			button = new JButton("添加");
 			InitJDialog();
 		}
 		
 		public TextJDialog(LoginModel login) {
 			super();
-			setTitle("修改选课信息");
+			setTitle("修改用户信息");
 			button = new JButton("修改");
 			this.data = login;
 			InitJDialog();
@@ -204,10 +205,11 @@ public class UserManage extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					LoginModel login = new LoginModel();
-					login.setId(idBox.getSelectedItem()+"");
+					tools tool = new tools();
+					login.setId(tool.Split(new tools().Split(idBox.getSelectedItem()+"")));
 					login.setName(nameText.getText());
-					login.setLimit(limitBox.getSelectedItem()+"");
-					if(login.getId().length() == 0 || login.getName().length() == 0 || login.getLimit().length() != 1) {
+					login.setLimit(Integer.parseInt(tool.Split(limitBox.getSelectedItem()+"")));
+					if(login.getId().length() == 0 || login.getName().length() == 0 || (login.getLimit() > 0 && login.getLimit() <= 9)) {
 						JOptionPane.showMessageDialog(getContentPane(), "以上三项都是必填项，不能遗漏");
 						return ;
 					}
@@ -233,7 +235,7 @@ public class UserManage extends JDialog {
 		
 		private void InitData() {
 			if(data != null) {
-				idBox.setSelectedItem(data.getId());
+				new tools().setSelectedItem(idBox, data.getId());
 				nameText.setText(data.getName());
 				limitBox.setSelectedItem(data.getLimit());
 			}

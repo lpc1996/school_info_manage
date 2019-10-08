@@ -20,7 +20,7 @@ import com.lpc.util.ReadFile;
 public class MainFrame extends JFrame {
 
 	/**
-	 * 
+	 * Ö÷´°¿Ú
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenuBar mainMenu;
@@ -80,11 +80,11 @@ public class MainFrame extends JFrame {
 		this.setLocation(new Point((Toolkit.getDefaultToolkit().getScreenSize().width - 800)/2, 
 				(Toolkit.getDefaultToolkit().getScreenSize().height-500)/2));
 		itemListener = new BtnListener();
-		if(Login.getUser().getType().equals("student")) {
+		if(Login.getLoginModel().getLimit() < 4) {
 			setJMenuBar(setStudentMenu());
-		}else if(Login.getUser().getType().equals("teacher")) {
+		}else if(Login.getLoginModel().getLimit() >= 4 && Login.getLoginModel().getLimit() < 7) {
 			setJMenuBar(setTeacherMenu());
-		}else if(Login.getUser().getType().equals("admin")) {
+		}else if(Login.getLoginModel().getLimit() >= 7) {
 			setJMenuBar(setadminMenuBar());
 		}
 		
