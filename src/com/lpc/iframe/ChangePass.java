@@ -19,7 +19,9 @@ import com.lpc.util.Secret;
 public class ChangePass extends JDialog {
 
 	/**
-	 * ĞŞ¸Ä¸öÈËÕË»§ÃÜÂë
+	 * 
+	 * 
+	 * ï¿½Ş¸Ä¸ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -38,32 +40,32 @@ public class ChangePass extends JDialog {
 	
 	public void initFrame() {
 		this.setIconImage(Toolkit.getDefaultToolkit().createImage(Login.getImgURL()));
-		this.setTitle("ĞŞ¸ÄÃÜÂë");
+		this.setTitle("ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setSize(256, 240);
 		this.setModal(true);
 		this.setLocation(new Point(0, 0));
 		this.setLocationRelativeTo(null);
 		
-		JLabel oldPassLab = new JLabel("¾ÉÃÜÂë£º");
+		JLabel oldPassLab = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ë£º");
 		oldPassLab.setBounds(new Rectangle(30, 30, 60, 30));
 		oldPassText = new JPasswordField();
 		oldPassText.setBounds(new Rectangle(90, 30, 120, 30));
-		JLabel newPassLab = new JLabel("ĞÂÃÜÂë£º");
+		JLabel newPassLab = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ë£º");
 		newPassLab.setBounds(new Rectangle(30, 70, 60, 30));
 		newPassText = new JPasswordField();
 		newPassText.setBounds(new Rectangle(90, 70, 120, 30));
-		JLabel rePassLab = new JLabel("ĞÂÃÜÂë£º");
+		JLabel rePassLab = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½ë£º");
 		rePassLab.setBounds(new Rectangle(30, 110, 60, 30));
 		rePassText = new JPasswordField();
 		rePassText.setBounds(new Rectangle(90, 110, 120, 30));
 		changeBtn = new JButton();
-		changeBtn.setText("Ìá½»");
+		changeBtn.setText("ï¿½á½»");
 		changeBtn.setBounds((int)(this.getSize().getWidth()-80)/2, 150, 80, 30);
 		
 		contentPane = new JPanel();
 		contentPane.setLayout(null);
-		contentPane.setBorder(BorderFactory.createTitledBorder("²Ù×÷Ò»Ìå»¯"));
+		contentPane.setBorder(BorderFactory.createTitledBorder("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½å»¯"));
 		contentPane.add(oldPassLab);
 		contentPane.add(oldPassText);
 		contentPane.add(newPassLab);
@@ -81,27 +83,27 @@ public class ChangePass extends JDialog {
 				String newPass = new String(newPassText.getPassword());
 				String rePass = new String(rePassText.getPassword());
 				if(oldPass.length() == 0) {
-					JOptionPane.showMessageDialog(getContentPane(), "ÇëÊäÈë¾ÉÃÜÂë");
+					JOptionPane.showMessageDialog(getContentPane(), "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
 					return ;
 				}else if(newPass.length() == 0) {
-					JOptionPane.showMessageDialog(getContentPane(), "ÇëÊäÈëĞÂÃÜÂë");
+					JOptionPane.showMessageDialog(getContentPane(), "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					return ;
 				}else if(rePass.length() == 0) {
-					JOptionPane.showMessageDialog(getContentPane(), "ÇëÖØĞÂÊäÈëÃÜÂë");
+					JOptionPane.showMessageDialog(getContentPane(), "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 					return ;
 				}
 				if(newPass.equals(rePass))
 					newPass = new Secret(rePass).set();
 				else{
-					JOptionPane.showMessageDialog(getContentPane(), "Á½´ÎÊäÈëµÄÃÜÂë²»ÏàÍ¬£¬ÇëÖØĞÂÊäÈë");
+					JOptionPane.showMessageDialog(getContentPane(), "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?");
 					return ;
 				}
 				if(loginDao.updatePass(oldPass, newPass, Login.getLoginModel().getId())) {
-					JOptionPane.showMessageDialog(getContentPane(), "ĞŞ¸Ä³É¹¦ÇëÖØĞÂµÇÂ¼£¡");
+					JOptionPane.showMessageDialog(getContentPane(), "ï¿½Ş¸Ä³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½");
 					new Login().setVisible(true);
 					Dispose();
 				}else {
-					JOptionPane.showMessageDialog(getContentPane(), "ĞŞ¸ÄÊ§°Ü");
+					JOptionPane.showMessageDialog(getContentPane(), "ï¿½Ş¸ï¿½Ê§ï¿½ï¿½");
 				}
 			}
 		});
