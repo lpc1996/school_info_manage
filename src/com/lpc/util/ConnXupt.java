@@ -263,22 +263,21 @@ public class ConnXupt {
 	}
 	
 	public Vector getComment(String tableName) {
-		Vector commentVes = null;
+		Vector comments = null;
+		String sql = "SHOW FULL FIELDS FROM "+tableName+";";
 		try {
-			if(conn.isClosed())
-				refreshConnection();
-			PreparedStatement pst = conn.prepareStatement("select * from "+tableName);
-			ResultSet re = pst.executeQuery("show full columns from " + tableName);
-			commentVes = new Vector();
-			while(re.next()) {
-				commentVes.add(re.getString("Comment"));
+			ResultSet rs = excuteQuery(sql);
+			comments = new Vector<String>();
+			while(rs.next()) {
+				comments.add(rs.getString("comment"));
 			}
-			conn.close();
 		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close();
 		}
-		return commentVes;
+		return comments;
 	}
 
 }
